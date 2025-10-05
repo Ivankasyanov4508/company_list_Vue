@@ -163,6 +163,10 @@ export const useTableStore = defineStore('table', () => {
     const index = tableData.value.findIndex(item => item.id === id)
     if (index !== -1) {
       tableData.value.splice(index, 1)
+
+      if (currentPage.value > totalPages.value) {
+        currentPage.value = totalPages.value > 0 ? totalPages.value : 1
+      }
     }
   }
 
